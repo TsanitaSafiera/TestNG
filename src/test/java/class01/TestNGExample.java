@@ -21,7 +21,7 @@ public class TestNGExample {
 //    verify the  password is there
 //    close the browser
     public static WebDriver driver;
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public  void OpenAndLaunchBrowser(){
 //    webdriver    /
         driver=new ChromeDriver();
@@ -30,7 +30,7 @@ public class TestNGExample {
         driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(20));
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
     public void closeBroswer(){
         driver.close();
     }
@@ -40,7 +40,7 @@ public class TestNGExample {
 //    close the browser
 
 
-    @Test
+    @Test (groups = "smoke")
     public void verifyThatUserCanLogin(){
         WebElement userName = driver.findElement(By.xpath("//input[@name='txtUsername']"));
         userName.sendKeys("admin");
